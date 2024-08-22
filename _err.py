@@ -1,0 +1,2 @@
+class MatrixDimensionError(ValueError):
+    pass
