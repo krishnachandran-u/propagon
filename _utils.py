@@ -33,6 +33,9 @@ acts = {
     }
 }
 
+def mse(y: List[float], y_hat: List[float]) -> float:
+    return sum((y[i] - y_hat[i])**2 for i in range(len(y))) / len(y)
+
 def dot(a: List[List[float]], b: List[List[float]], act: str = None, bias: float = 0) -> List[List[float]]:
     def is_valid(a: List[List[int]]) -> None:
         if not is_rectangular(a): 

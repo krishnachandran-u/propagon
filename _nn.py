@@ -68,3 +68,14 @@ class NeuralNet:
     def update_weights(self, A: List[List[float]], D: List[List[float]], alpha: float) -> None:
         for i in range(len(self.weights)):
             self.weights[i] += -alpha * dot(transpose(A[i]), D[i])
+
+    def predict(self, x: List[List[float]], y: List[List[float]]) -> List[List[float]]:
+        if not is_rectangular(x):
+            raise ValueError("Input matrix is not rectangular")
+        y_hat = []
+        for i in range(len(x)):
+            y_hat.append(self.feed_forward([x[i]])[-1])
+
+        err = mse(y, y_hat)
+
+        return y_hat, err
